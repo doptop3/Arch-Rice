@@ -1,0 +1,181 @@
+// -*- mode: jsonc -*-
+[{
+    "output": ["DP-1", "eDP-2"],
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 0, // Waybar height (to be removed for auto height)
+    "spacing": 5, // Gaps between modules (5px)
+    "modules-left": ["group/workspaces","cava","hyprland/submap"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["group/system"],
+    "margin-top": 10,
+    "margin-left": 10,
+    "margin-right": 10,
+
+    "custom/openbracket": {
+        "format": "󰅁",
+        "tooltip": false
+    },
+    "custom/closebracket": {
+        "format": "󰅂",
+        "tooltip": false
+    },    
+    "custom/split": {
+      "format": "|",
+      "tooltip": false
+    },
+    "custom/space": {
+	"format": " ",
+	"tooltip": false
+    },
+
+    "group/system": {
+        "orientation": "horizontal",
+        "modules": [
+	    "mpris",
+	    "custom/space",
+	    "pulseaudio",
+	    "custom/space", 
+            "custom/notification",
+            "idle_inhibitor", 
+	    "memory",
+	    "temperature",
+	    "custom/split",	
+            "clock",
+	    "custom/split",
+            "tray" 
+        ]
+    },
+
+    "group/workspaces":{
+        "orientation": "horizontal",
+        "modules":[
+            "custom/openbracket",
+            "hyprland/workspaces",
+            "custom/closebracket"
+        ]
+    },
+
+    // --- HYPRLAND MODULES ---
+    "hyprland/workspaces": {
+        "all-outputs": true,
+        "active-only": false,
+        "on-click": "activate",
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "format": "{icon}",
+        "persistent-workspaces": {
+            "*": [1, 2, 3, 4, 5, 6, 8, 9, 10]
+        },
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+	    "6": "",
+	    "8": "󰹑",
+            "9": "",
+            "10": "",
+            "urgent": "",
+            "default": "",
+	    "persistent": ""
+        }
+    },
+
+    "hyprland/window": {
+        "format": "{title}",
+        "max-length": 60, // Mimicking your Sway setting of 60
+        "separate-outputs": false // Mimicking Sway's "all-outputs": true behavior
+    },
+    "hyprland/submap": {
+	"format": "{}",
+	"max-length": 8,
+	"tooltip": false
+    },
+    "cava": {
+        "framerate": 30,
+    	"autosens": 1,
+    	"bars": 14,
+	"source": "auto",
+    	"lower_cutoff_freq": 50,
+    	"higher_cutoff_freq": 10000,
+    	"method": "pipewire",
+    	"stereo": true,
+    	"bar_delimiter": 0,
+    	"noise_reduction": 0.77,
+    	"input_delay": 5, // Increased for stability
+    	"hide_on_silence": false, // Set to false to verify it shows up
+    	"format-icons": [" ", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+    	"on-click-right": "pavucontrol"
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    "mpris": {
+ 	"format": " {status_icon} {dynamic}",
+        "interval": 1,
+        "dynamic-len": 50,
+	"status-icons": {"playing": "▶","paused": "⏸","stopped": ""},
+	"dynamic-order": ["title", "artist"],
+	"ignored-players": ["chromium"]
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        "icon-size": 12,
+        "spacing": 12,
+    },
+    "clock": { 
+    	"format": "{:%I:%M %p}",
+    	"tooltip": false,
+	"on-click": "kitty vim ~/.notes.md",
+	"on-click-right": "wireshark"
+    },
+    "memory": {
+        "format": " {}%",
+	"tooltip": false,
+	"on-click": "kitty -e btop",
+	"on-click-right": "kitty sh -c 'fastfetch; exec bash'"
+    }, 
+    "temperature": {
+    	"hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input", 
+    	"critical-threshold": 80,
+    	"format": " {temperatureC}°C",
+    	"tooltip": false,
+	"on-click": "GDK_BACKEND=x11 missioncenter",
+	"on-click-right": "kitty -e nvtop" 
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}% ",
+        "format-bluetooth-muted": "{icon} 󰂲",
+        "format-muted": "",
+        "format-icons": {
+            "hands-free": "󰢳",
+            "portable": "󰗜",
+	    "phone": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    }
+}]

@@ -1,0 +1,181 @@
+@import url('../../.cache/wal/colors-waybar.css');
+
+@define-color bg        #303030;
+@define-color bg1       #707070;
+@define-color fg        #a0e9ff;
+@define-color red       #780606;
+@define-color green     #98971a;
+@define-color yellow    #d79921;
+@define-color pink	#707070;
+@define-color blue      #458588;
+@define-color purple    #b16286;
+@define-color aqua      #689d6a;
+@define-color grey      #a89984;
+
+* {
+    font-size: 14px;
+    font-family: 'CodeNewRoman Nerd Font Propo', 'FontAwesome', monospace;
+}
+
+.modules-center {
+    margin: 0;
+    padding: 0;
+}
+
+.modules-left, .modules-right {
+    margin: 0;
+    padding: 0;
+}
+
+#custom-openbracket,
+#custom-closebracket {
+    font-size: 25px;
+    padding: 0 5px;
+    margin: 0; 
+    background-color: transparent;
+    color: @color15;
+}
+#custom-split {
+    padding: 0 5px;
+    margin: 0; 
+    background-color: @bg;
+    color: @fg;
+}
+#custom-space {
+  margin: 0;
+}
+
+window#waybar {
+    font-family: 'FontAwesome', monospace;
+    background-color: transparent;
+    border: 10px solid transparent;
+    color: @fg;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+#window {
+    padding: 0 5px;
+    background-color: @color0;
+    color: @foreground;
+    border-radius: 5px;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    /* box-shadow: inset 0 -3px transparent; */
+    border: none;
+}
+
+#idle_inhibitor,
+#window,
+#clock,
+#tray,
+#memory,
+#temperature,
+#custom-notification,
+#hyprland-submap {
+    padding: 0 10px;
+    background-color: @bg;
+    color: @fg;
+}
+
+#pulseaudio {
+    padding: 0 8px;
+    background-color: @bg;
+    color: @fg;
+}
+
+#pulseaudio.muted {
+    background-color: @blue;
+}
+
+#workspaces {
+    padding: 0;
+    background-color: @bg;
+}
+
+#workspaces button {
+    min-width: 0;
+    padding: 0 8px;
+    background-color: transparent;
+    color: @grey;
+    border-radius: 0;
+}
+
+#workspaces button:first-child { border-radius: 5px 0 0 5px; }
+#workspaces button:last-child { border-radius: 0 5px 5px 0; }
+#workspaces button:first-child:last-child { border-radius: 5px; }
+
+#workspaces button:hover {
+    color: @purple;
+}
+
+#workspaces button.persistent {
+    color: @color8;
+}
+
+#workspaces button.active {
+    background-color: @bg1; 
+    color: @fg;
+}
+
+#workspaces button.urgent {
+    background-color: @red;
+    color: @color15;
+}
+
+#cava {
+    padding: 10px 8px 0 8px;
+    background-color: transparent;
+    color: @fg;
+}
+
+#mpris {
+  padding: 0 10px;
+  background-color: @bg;
+  color: @fg;
+}
+
+#mpris.playing {
+    background-color: @yellow;
+    color: @bg;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+#tray menu {
+    font-family: sans-serif;
+}
+
+tooltip {
+    background-color: rgba(40, 40, 40, 0.9);
+    border-radius: 5px;
+    border: 1px solid @bg1;
+}
+
+tooltip label {
+    color: @fg;
+    text-shadow: none;
+}
+
+@keyframes blink {
+    to {
+        background-color: @bg;
+        color: @fg;
+    }
+}
