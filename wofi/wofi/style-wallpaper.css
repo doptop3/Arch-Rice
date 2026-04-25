@@ -1,0 +1,55 @@
+@import url('file:///home/doptop/.cache/wal/colors-waybar.css');
+
+@define-color text  @color7;
+@keyframes fadeIn {
+    0% {
+    }
+    100% {
+    }
+}
+
+* {
+    outline: none;
+    border: none;
+    text-shadow:none;
+    background-color:transparent;
+}
+
+window {
+    margin: 0px;
+    border: 1px solid #928374;
+    background-color: alpha(@background,.5);
+}
+#inner-box {
+    margin: 5px;
+    padding: 0px;
+    border: none;
+    background-color: alpha(@background,.5); 
+}
+#scroll {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+#entry {
+    border: none;
+    margin: 5px;
+    padding: 10px;
+}
+#entry arrow {
+    border: none;
+    color: @color15;
+
+}
+#entry:selected {
+    box-shadow: 1px 1px 5px rgba(255,255,255,.03);
+    border: none;
+    border-radius: 20px;
+    background-color: alpha(@foreground,.1);
+}
+#entry:selected #text {
+    color: @color15;
+}
+#entry:drop(active) {
+    background-color: @color15;
+}

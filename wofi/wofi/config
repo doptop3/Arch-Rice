@@ -1,0 +1,16 @@
+[config]
+allow_images=true
+width=600
+height=800
+show_all=false
+show-icons=true
+prompt=Launch
+term=kitty
+hide_scroll=true
+print_command=true
+insensitive=true
+normal_window=true
+columns=1
+line_wrap=word
+no_actions=true
+gtk_dark=false
