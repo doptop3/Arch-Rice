@@ -1,16 +1,15 @@
 @import url('../../.cache/wal/colors-waybar.css');
 
 @define-color bg        #EDE8D0;
-@define-color bg1       #5C3317;
+@define-color bg1       #2c1f12;
 @define-color fg        #332421;
 @define-color red       #780606;
 @define-color green     #98971a;
-@define-color yellow    #d79921;
+@define-color yellow    #D3AF37;
 @define-color pink	#FFC5D3;
 @define-color blue      #00B4D8;
 @define-color purple    #b16286;
 @define-color grey      #35281E;
-@define-color bc        #51361A;
 
 * {
     font-size: 14px;
@@ -73,9 +72,8 @@ button {
 #temperature,
 #custom-notification {
     padding: 0 10px;
-    background-color: @bc;
-    border: 3px solid @fg;
-    color: @fg;
+    background-color: @bg1;
+    color: #FFFFFF;
 }
 
 #hyprland-submap {
@@ -122,7 +120,7 @@ button {
 
 #workspaces button.active {
     background-color: @bg1; 
-    color: @fg;
+    color: #FFFFFF;
 }
 
 #workspaces button.urgent {
@@ -137,9 +135,9 @@ button {
 }
 
 #cava {
-    padding: 10px 8px 0 8px;
+    padding: 10px 8px 0px 8px;
     background-color: transparent;
-    color: @fg;
+    color: @bg;
 }
 
 #mpris {

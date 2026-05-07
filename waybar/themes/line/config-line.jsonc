@@ -2,7 +2,7 @@
 [{
     "output": ["DP-1", "eDP-2"],
     "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
+    "position": "top",
     "spacing": 5, // Gaps between modules (5px)
     "modules-left": ["group/workspaces", "cava", "hyprland/submap"],
     "modules-center": ["hyprland/window"],
@@ -10,7 +10,7 @@
     "margin-top": 10,
     "margin-left": 10,
     "margin-right": 10,
-    
+
     "custom/split": {
       "format": "|",
       "tooltip": false

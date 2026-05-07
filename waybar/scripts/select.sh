@@ -14,22 +14,18 @@ main() {
     selected_wallpaper=$(echo "$choice" | sed 's/^img://')
     echo $selected_wallpaper
 
-    case "$selected_wallpaper" in
-        "$ASSETS/experimental.png")
-            cp "$THEMES/experimental/style-experimental.css" "$STYLECSS"
-            cp "$THEMES/experimental/config-experimental" "$CONFIG"
-            ;;
+    case "$selected_wallpaper" in 
         "$ASSETS/main.png")
             cp "$THEMES/default/style-default.css" "$STYLECSS"
             cp "$THEMES/default/config-default.jsonc" "$CONFIG"
             ;;
         "$ASSETS/line.png")
             cp "$THEMES/line/style-line.css" "$STYLECSS"
-            cp "$THEMES/line/config-line" "$CONFIG"
+            cp "$THEMES/line/config-line.jsonc" "$CONFIG"
             ;;
         "$ASSETS/zen.png")
             cp "$THEMES/zen/style-zen.css" "$STYLECSS"
-            cp "$THEMES/zen/config-zen" "$CONFIG"
+            cp "$THEMES/zen/config-zen.jsonc" "$CONFIG"
             ;;
         *)
             echo "Unknown selection"

@@ -1,52 +1,179 @@
 @import url('../../.cache/wal/colors-waybar.css');
 
+@define-color bg        #EADEE6;
+@define-color bg1       #CCB2C7;
+@define-color fg        #2B2D42;
+@define-color red       #780606;
+@define-color green     #98971a;
+@define-color yellow    #DFF7F2;
+@define-color pink	#FFC5D3;
+@define-color blue      #D2E0FF;
+@define-color purple    #AF96F2;
+@define-color grey      #B49EF4;
+@define-color bc        #8154C9;
 * {
-    font-size:15px;
-    font-family: "CodeNewRoman Nerd Font Propo";
+    font-size: 14px;
+    font-family: 'CodeNewRoman Nerd Font Propo', 'FontAwesome', monospace;
 }
-window#waybar{
-    all:unset;
-}
+
 .modules-center {
-    padding:7px;
-    margin:10 0 5 0;
-    border-radius:10px;
-    background: alpha(@background,.6);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
+    margin: 0;
+    padding: 0;
 }
+
+.modules-left, .modules-right {
+    margin: 0;
+    padding: 0;
+}
+
+#custom-split {
+    padding: 0 4px;
+    margin: 0; 
+    background-color: @grey;
+    color: #FFFFFF;
+}
+#custom-space {
+  margin: 0;
+}
+
+window#waybar {
+    font-family: 'FontAwesome', monospace;
+    background-color: transparent;
+    border: 10px solid transparent;
+    color: @fg;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+   
+}
+
+#window {
+    padding: 0 5px;
+    background-color: @grey;
+    color: #FFFFFF;
+    border-radius: 5px;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    /* box-shadow: inset 0 -3px transparent; */
+    border: none;
+}
+
+#idle_inhibitor,
+#memory,
+#temperature,
+#custom-notification {
+    padding: 5px 10px;
+    background-color: @bc;
+    border: 3px solid @purple;
+    color: #FFFFFF;
+}
+
+#hyprland-submap {
+    padding: 0 10px;
+    background-color: @fg;
+    color: #FFFFFF;
+}
+
+#pulseaudio {
+    padding: 0 8px;
+    background-color: @bg;
+    color: @fg;
+}
+
+#pulseaudio.muted {
+    background-color: @blue;
+}
+
 #workspaces {
-    padding: 0px 5px;
+    padding: 0; 
 }
+
 #workspaces button {
-    all:unset;
-    padding: 0px 5px;
-    color: alpha(@color9,.4);
-    transition: all .2s ease;
+    min-width: 0;
+    padding: 2px 10px;
+    background-color: @bg;
+    color: @bg1;
+    border-radius: 0;
 }
+
+#workspaces button:first-child { border-radius: 5px 0 0 5px; }
+#workspaces button:last-child { border-radius: 0 5px 5px 0; }
+#workspaces button:first-child:last-child { border-radius: 5px; }
+
 #workspaces button:hover {
-    color:rgba(0,0,0,0);
-    border: none;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
-    transition: all 1s ease;
+    color: @purple;
 }
+
+#workspaces button.persistent {
+    color: @color8;
+    border: 2px solid @bg;
+}
+
 #workspaces button.active {
-    color: @color9;
-    border: none;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+    background-color: @bg1; 
+    color: #FFFFFF;
 }
-#workspaces button.empty {
-    color: rgba(0,0,0,0);
-    border: none;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
+
+#workspaces button.urgent {
+    background-color: @red;
+    color: @color15;
 }
-#workspaces button.empty:hover {
-    color: rgba(0,0,0,0);
-    border: none;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
-    transition: all 1s ease;
+
+#clock {
+    padding: 0 10px;
+    background-color: @grey;
+    color: #FFFFFF;
 }
-#workspaces button.empty.active {
-    color: @color9;
-    border: none;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+
+#cava {
+    padding: 10px 8px 0px 8px;
+    background-color: transparent;
+    color: @blue;
+}
+
+#mpris {
+  padding: 0 15px;
+  background-color: @bg;
+  color: @fg;
+}
+
+#mpris.playing {
+    background-color: @yellow;
+    color: @fg;
+}
+
+#tray {
+    padding: 0 10px;
+    background-color: @grey;
+}
+
+#tray menu {
+    font-family: sans-serif;
+}
+
+tooltip {
+    background-color: rgba(40, 40, 40, 0.9);
+    border-radius: 5px;
+    border: 1px solid @bg1;
+}
+
+tooltip label {
+    color: @bg;
+    text-shadow: none;
+}
+
+@keyframes blink {
+    to {
+        background-color: @fg;
+        color: @bg;
+    }
 }

@@ -3,6 +3,7 @@
     "output": ["DP-1", "eDP-2"],
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 0, // Waybar height (to be removed for auto height)
     "spacing": 5, // Gaps between modules (5px)
     "modules-left": ["group/workspaces", "cava", "hyprland/submap"],
     "modules-center": ["hyprland/window"],
