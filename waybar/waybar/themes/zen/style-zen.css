@@ -1,16 +1,16 @@
 @import url('../../.cache/wal/colors-waybar.css');
 
-@define-color bg        #EDE8D0;
-@define-color bg1       #2c1f12;
-@define-color fg        #332421;
+@define-color bg        #EADEE6;
+@define-color bg1       #CCB2C7;
+@define-color fg        #2B2D42;
 @define-color red       #780606;
 @define-color green     #98971a;
-@define-color yellow    #D3AF37;
+@define-color yellow    #DFF7F2;
 @define-color pink	#FFC5D3;
-@define-color blue      #00B4D8;
-@define-color purple    #b16286;
-@define-color grey      #35281E;
-
+@define-color blue      #D2E0FF;
+@define-color purple    #AF96F2;
+@define-color grey      #B49EF4;
+@define-color bc        #8154C9;
 * {
     font-size: 14px;
     font-family: 'CodeNewRoman Nerd Font Propo', 'FontAwesome', monospace;
@@ -34,12 +34,12 @@
 }
 #custom-space {
   margin: 0;
-  background-color: @grey;
 }
 
 window#waybar {
     font-family: 'FontAwesome', monospace;
-    background-color: @grey;
+    background-color: transparent;
+    border: 10px solid transparent;
     color: @fg;
     transition-property: background-color;
     transition-duration: .5s;
@@ -71,8 +71,9 @@ button {
 #memory,
 #temperature,
 #custom-notification {
-    padding: 0 10px;
-    background-color: @bg1;
+    padding: 5px 10px;
+    background-color: @bc;
+    border: 3px solid @purple;
     color: #FFFFFF;
 }
 
@@ -85,7 +86,6 @@ button {
 #pulseaudio {
     padding: 0 8px;
     background-color: @bg;
-    border: 1px solid @grey;
     color: @fg;
 }
 
@@ -119,8 +119,8 @@ button {
 }
 
 #workspaces button.active {
-    background-color: #564B48; 
-    color: #C39E93;
+    background-color: @bg1; 
+    color: #FFFFFF;
 }
 
 #workspaces button.urgent {
@@ -137,7 +137,7 @@ button {
 #cava {
     padding: 10px 8px 0px 8px;
     background-color: transparent;
-    color: @bg;
+    color: @blue;
 }
 
 #mpris {
@@ -148,12 +148,12 @@ button {
 
 #mpris.playing {
     background-color: @yellow;
-    color: @bg;
+    color: @fg;
 }
 
 #tray {
     padding: 0 10px;
-    background-color: @fg;
+    background-color: @grey;
 }
 
 #tray menu {

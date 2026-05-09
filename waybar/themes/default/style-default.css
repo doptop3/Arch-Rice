@@ -119,8 +119,8 @@ button {
 }
 
 #workspaces button.active {
-    background-color: @bg1; 
-    color: #FFFFFF;
+    background-color: #564B48; 
+    color: #C39E93;
 }
 
 #workspaces button.urgent {
