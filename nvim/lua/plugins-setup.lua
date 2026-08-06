@@ -47,7 +47,14 @@ require("lazy").setup({
     },
       config = function()
       require("neo-tree").setup({
-        close_if_last_window = true,
+	close_if_last_window = true,
+      	  filesystem = {
+          filtered_items = {
+            visible = true, -- Show hidden files by default
+            hide_dotfiles = false,
+            hide_gitignored = false,
+          },
+        },
       })
     end
   },
@@ -81,12 +88,13 @@ require("lazy").setup({
       -- Global function handling all build/run logic
       _G.RunProjectBuild = function()
         local full_path = vim.fn.expand("%:p")
+	local file_dir = vim.fn.expand("%:p:h")
         local file_ext = vim.fn.expand("%:e")
         
         -- 1 Project Root Detection
         local root_match = vim.fs.find({ "bin", ".git", "Makefile", "package.json", ".venv" }, { 
           upward = true, 
-          path = vim.fn.expand("%:p:h") 
+          path = file_dir
         })[1]
         local project_root = root_match and vim.fn.fnamemodify(root_match, ":h") or vim.fn.getcwd()
         
@@ -95,16 +103,16 @@ require("lazy").setup({
 
         -- 2 Determine Command (Priority: build.sh > Makefile > Language Fallback)
         local cmd = nil
-        local task_name = "Project Build"
+        local exec_dir = project_root
 
         if vim.loop.fs_stat(build_script) then
             cmd = { "bash", build_script }
-            task_name = "Bash: bin/build.sh"
         elseif vim.loop.fs_stat(makefile) then
             cmd = { "make" }
-            task_name = "Make: Compile"
         else
-            -- Language Fallbacks
+	    exec_dir = file_dir
+           
+	    -- Language Fallbacks
             local lang_map = {
                 py   = { name = "Python: Run", cmd = { "python3", full_path } },
                 java = { name = "Java: Run",   cmd = { "java", full_path } },
@@ -115,7 +123,6 @@ require("lazy").setup({
 
             if lang_map[file_ext] then
                 cmd = lang_map[file_ext].cmd
-                task_name = lang_map[file_ext].name
             end
         end
 
@@ -128,7 +135,7 @@ require("lazy").setup({
             
             -- Call ToggleTerm directly:
             -- exec(cmd, id, size, dir, direction)
-            require("toggleterm").exec(cmd_str, 1, 15, project_root, "horizontal")
+            require("toggleterm").exec(cmd_str, 1, 15, exec_dir, "horizontal")
         else
             print("No build script or language runner found for ." .. file_ext)
         end

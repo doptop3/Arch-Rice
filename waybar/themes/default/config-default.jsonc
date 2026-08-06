@@ -23,17 +23,17 @@
     "group/system": {
         "orientation": "horizontal",
         "modules": [
-	    "mpris",
-	    "custom/space",
-	    "pulseaudio",
-	    "custom/space", 
+	          "mpris",
+	          "custom/space",
+	          "pulseaudio",
+	          "custom/space", 
             "custom/notification",
             "idle_inhibitor", 
-	    "memory",
-	    "temperature",
-	    "custom/split",	
+	          "memory",
+	          "temperature",
+	          "custom/split",	
             "clock",
-	    "custom/split",
+	          "custom/split",
             "tray" 
         ]
     },
@@ -50,8 +50,8 @@
         "all-outputs": true,
         "active-only": false,
         "on-click": "activate",
-        "on-scroll-up": "hyprctl dispatch workspace e+1",
-        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "on-scroll-up": "hyprctl dispatch 'workspace e+1'",
+        "on-scroll-down": "hyprctl dispatch 'workspace e-1'",
         "format": "{icon}",
         "persistent-workspaces": {
             "*": [1, 2, 3, 4, 5, 6, 8, 9, 10]
@@ -60,15 +60,15 @@
             "1": "",
             "2": "",
             "3": "",
-            "4": "",
-            "5": "",
-	    "6": "",
-	    "8": "󰹑",
+	          "4": "",
+            "5": "",
+	          "6": "",
+	          "8": "󰹑",
             "9": "",
             "10": "",
             "urgent": "",
             "default": "",
-	    "persistent": ""
+	          "persistent": ""
         }
     },
 
@@ -77,30 +77,33 @@
         "max-length": 60, // Mimicking your Sway setting of 60
         "separate-outputs": false // Mimicking Sway's "all-outputs": true behavior
     },
+    
     "hyprland/submap": {
-	"format": "{}",
-	"max-length": 8,
-	"tooltip": false
+      "format": "{}",
+      "max-length": 8,
+      "tooltip": false
     },
-   "cava": {
-	"framerate": 60,
-	"autosens": 1,
-	"bars": 20,
-	"lower_cutoff_freq": 50,
-	"higher_cutoff_freq": 10000,
-	"method": "pipewire",
-	"source": "auto",
-	"stereo": true,
-	"reverse": false,
-	"bar_delimiter": 0,
-	"monstercat": false,
-	"waves": false,
-	"hide_on_silence": true,
-	"noise_reduction": 0.77,
-	"input_delay": 2,
-	"format-icons": [" ", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
-	"on-click-right": "pavucontrol"
+    
+    "cava": {
+      "framerate": 60,
+      "autosens": 1,
+      "bars": 20,
+      "lower_cutoff_freq": 50,
+      "higher_cutoff_freq": 10000,
+      "method": "pipewire",
+      "source": "auto",
+      "stereo": true,
+      "reverse": false,
+      "bar_delimiter": 0,
+      "monstercat": false,
+      "waves": false,
+      "hide_on_silence": true,
+      "noise_reduction": 0.77,
+      "input_delay": 2,
+      "format-icons": [" ", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+      "on-click-right": "pavucontrol"
     },
+
     "custom/notification": {
         "tooltip": false,
         "format": "{icon}",
@@ -110,6 +113,7 @@
             "dnd-notification": "<span foreground='red'><sup></sup></span>",
             "dnd-none": ""
         },
+
         "return-type": "json",
         "exec-if": "which swaync-client",
         "exec": "swaync-client -swb",
@@ -117,14 +121,16 @@
         "on-click-right": "swaync-client -d -sw",
         "escape": true
     },
+
     "mpris": {
- 	"format": " {status_icon} {dynamic}",
+ 	      "format": " {status_icon} {dynamic}",
         "interval": 1,
         "dynamic-len": 50,
-	"status-icons": {"playing": "▶","paused": "⏸","stopped": ""},
-	"dynamic-order": ["title", "artist"],
-	"ignored-players": ["chromium"]
+        "status-icons": {"playing": "▶","paused": "⏸","stopped": ""},
+        "dynamic-order": ["title", "artist"],
+        "ignored-players": ["chromium"]
     },
+
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -132,30 +138,35 @@
             "deactivated": ""
         }
     },
+
     "tray": {
         "icon-size": 14,
-        "spacing": 14,
+        "spacing": 14
     },
+
     "clock": { 
-    	"format": "{:%I:%M %p}",
-    	"tooltip": false,
-	"on-click": "kitty --class floating_notes -e nvim ~/.notes.md",
-	"on-click-right": "wireshark"
+    	  "format": "{:%I:%M %p}",
+    	  "tooltip": false,
+	      "on-click": "kitty --class floating_notes -e nvim ~/.notes.md",
+	      "on-click-right": "wireshark"
     },
+
     "memory": {
         "format": " {}%",
-	"tooltip": false,
-	"on-click": "kitty -e btop",
-	"on-click-right": "kitty sh -c 'fastfetch; exec bash'"
-    }, 
-    "temperature": {
-    	"hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input", 
-    	"critical-threshold": 80,
-    	"format": " {temperatureC}°C",
-    	"tooltip": false,
-	"on-click": "GDK_BACKEND=x11 missioncenter",
-	"on-click-right": "kitty -e nvtop" 
+	      "tooltip": false,
+	      "on-click": "kitty -e btop",
+	      "on-click-right": "kitty sh -c 'fastfetch; exec bash'"
     },
+
+    "temperature": {
+    	  "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input", 
+    	  "critical-threshold": 80,
+    	  "format": " {temperatureC}°C",
+    	  "tooltip": false,
+	      "on-click": "GDK_BACKEND=x11 missioncenter",
+	      "on-click-right": "kitty -e nvtop" 
+    },
+
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "format-bluetooth": "{icon} {volume}% ",
@@ -164,7 +175,7 @@
         "format-icons": {
             "hands-free": "󰢳",
             "portable": "󰗜",
-	    "phone": "",
+	          "phone": "",
             "car": "",
             "default": ["", "", ""]
         },

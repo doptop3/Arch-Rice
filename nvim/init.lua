@@ -12,6 +12,10 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 300
+vim.opt.shiftwidth = 2   -- Number of spaces for '>' and '<'
+vim.opt.tabstop = 2      -- Number of spaces a <Tab> character counts for
+vim.opt.softtabstop = 2  -- Number of spaces inserted when pressing <Tab>
+vim.opt.expandtab = true -- Convert tabs to spaces
 
 local keyset = vim.keymap.set
 
@@ -25,7 +29,6 @@ keyset('i', '<TAB>', [[coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_sp
 keyset('i', '<S-TAB>', [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
 keyset('i', '<cr>', [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
 keyset('n', '<C-n>', ':Neotree toggle<CR>', { silent = true })
-keyset('n', '<F2>', '<cmd>1ToggleTerm<CR>', { silent = true })
 keyset('n', '<F1>', '<cmd>lua RunProjectBuild()<CR>', { silent = true })
 keyset('n', '<C-h>', '<C-w>h', { silent = true })
 keyset('n', '<C-j>', '<C-w>j', { silent = true })
